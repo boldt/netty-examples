@@ -1,0 +1,1 @@
+Example for http://stackoverflow.com/questions/8883413/netty-how-to-test-for-client-server-version-numbers
