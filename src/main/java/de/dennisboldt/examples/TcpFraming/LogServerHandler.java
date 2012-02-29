@@ -12,7 +12,7 @@ public class LogServerHandler extends SimpleChannelHandler {
 	@Override
 	public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) {
         ChannelBuffer buf = (ChannelBuffer) e.getMessage();
-		System.out.println("Received: " + buf.readableBytes());
+		System.out.println("LogServer Received: " + buf.readableBytes());
 	}
 
 	@Override

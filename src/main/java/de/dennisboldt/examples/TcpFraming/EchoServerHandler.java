@@ -5,6 +5,7 @@ import java.net.InetSocketAddress;
 import java.util.concurrent.Executors;
 
 import org.jboss.netty.bootstrap.ClientBootstrap;
+import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.channel.Channel;
 import org.jboss.netty.channel.ChannelFuture;
 import org.jboss.netty.channel.ChannelFutureListener;
@@ -46,6 +47,9 @@ public class EchoServerHandler extends SimpleChannelHandler {
 
 	@Override
 	public void messageReceived(ChannelHandlerContext ctx, MessageEvent e) {
+
+        ChannelBuffer buf = (ChannelBuffer) e.getMessage();
+		System.out.println("EchoServer Received: " + buf.readableBytes());
 
 		// Echo the message
 		Channel ch = e.getChannel();
