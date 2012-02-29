@@ -3,6 +3,7 @@ package de.dennisboldt.examples.FlashSocketPolicy;
 import org.jboss.netty.buffer.ChannelBuffer;
 import org.jboss.netty.buffer.DynamicChannelBuffer;
 import org.jboss.netty.channel.ChannelHandlerContext;
+import org.jboss.netty.channel.Channels;
 import org.jboss.netty.channel.MessageEvent;
 import org.jboss.netty.channel.SimpleChannelHandler;
 
@@ -43,7 +44,7 @@ public class FlashSocketPolicyHandler extends SimpleChannelHandler {
 				ChannelBuffer responseBuffer = new DynamicChannelBuffer(policyFileResponse.capacity() + 1);
 				responseBuffer.writeBytes(policyFileResponse.toString().getBytes());
 				responseBuffer.writeByte(0x00);
-				ctx.getChannel().write(responseBuffer);
+				Channels.write(ctx, Channels.future(ctx.getChannel()), responseBuffer);
 			}
 		} else {
 			super.messageReceived(ctx, e);

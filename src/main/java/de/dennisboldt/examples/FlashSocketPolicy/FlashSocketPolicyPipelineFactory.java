@@ -27,6 +27,7 @@ public class FlashSocketPolicyPipelineFactory implements ChannelPipelineFactory 
     public ChannelPipeline getPipeline() throws Exception {
         ChannelPipeline pipeline = Channels.pipeline();
         pipeline.addLast("handler", new FlashSocketPolicyHandler());
+        pipeline.addLast("TEST", new Test());
         return pipeline;
     }
 }
